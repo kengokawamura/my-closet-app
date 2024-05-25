@@ -1,12 +1,14 @@
+import path from 'path'
 import Layout from '../components/layout'
-import category_register_style from './category-register.module.css'
 
-export default function Page() {
+export default async function Page() {
+    let path = `${process.env.MY_CLOSET_API_HOST}/category`;
+    const response = await fetch(path)
+    const body = await response.text()
     return (
         <Layout>
-            <button>
-                <h1 className={category_register_style.button}>Category Test</h1>
-            </button>
+            <h1>Fetch Test</h1>
+            <h1>{body}</h1>
         </Layout>
     )
 }
